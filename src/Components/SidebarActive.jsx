@@ -1,5 +1,5 @@
 import youtubeLogo from '../assets/logo/youtube-logo.svg'
-import ButtonMenu from './buttonMenu'
+import ButtonMenu from './ButtonMenu'
 import { sidebarDataActive } from '../data/sidebarData'
 
 const SidebarActive = () => {

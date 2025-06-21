@@ -3,8 +3,7 @@ import searchIcon from '../assets/icon/search-icon.svg'
 import microphoneIcon from '../assets/icon/microphone-icon.svg'
 import settingIcon from '../assets/icon/setting-icon.svg'
 import profileIcon from '../assets/icon/profile-icon.svg'
-import ButtonMenu from './buttonMenu'
-
+import ButtonMenu from './ButtonMenu'
 
 const Header = () => {
     return (

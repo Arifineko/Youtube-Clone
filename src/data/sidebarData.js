@@ -12,7 +12,12 @@ export const sidebarData = [
     }, {
         name: 'Subscriptions',
         image: subscriptionIcon
+    },
+    {
+        name: 'Subscriptions',
+        image: subscriptionIcon
     }
+
 ]
 
 export const sidebarDataActive = [

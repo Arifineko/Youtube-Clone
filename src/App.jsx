@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import Content from './Components/Content'
-import Header from './Components/Header'
-import Sidebar from './Components/Sidebar'
-import SidebarActive from './Components/SidebarActive'
+import Content from './components/Content'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import SidebarActive from './components/SidebarActive'
 import { MenuContext } from './context/MenuContext'
 
 

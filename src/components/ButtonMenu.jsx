@@ -6,7 +6,7 @@ const ButtonMenu = () => {
     const { menu, setMenu } = useContext(MenuContext)
 
     return (
-        <button onClick={() => setMenu(!menu)}>
+        <button className='hidden md:block' onClick={() => setMenu(!menu)}>
             <img className='mx-3 cursor-pointer' src={menuIcon} alt="" />
         </button>
     )

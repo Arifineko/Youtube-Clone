@@ -32,12 +32,12 @@ const Content = () => {
     }, [])
 
     return (
-        <div className='pl-20 pt-15 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 p-5'>
+        <div className='md:pl-20 md:pt-16 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
             {
                 youtube.map((video, key) => {
                     return <div key={key}>
-                        <div className="max-w-sm">
-                            <div className="aspect-video rounded-xl overflow-hidden">
+                        <div className="md:max-w-sm">
+                            <div className="aspect-video rounded-xl md:overflow-hidden">
                                 <img
                                     src={video.snippet.thumbnails.high.url}
                                     alt=""
@@ -45,7 +45,7 @@ const Content = () => {
                                 />
                             </div>
                         </div>
-                        <div className='grid grid-cols-[48px_1fr] mt-2'>
+                        <div className='grid grid-cols-[48px_1fr] px-2 md:px-0 mt-2'>
                             <div>
                                 <img className='rounded-full' src={channel1} alt="" />
                             </div>

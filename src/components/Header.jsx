@@ -38,7 +38,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex fixed left-0 md:left-16 top-[52px] right-0 px-3 py-2 z-40 gap-3 overflow-x-auto'>
+            <div className='flex fixed left-0 md:left-16 top-[46px] md:top-[52px] right-0 px-3 py-2 z-40 gap-3 overflow-x-auto'>
                 {catagoriesData.map((category, key) => (
                     <div
                         key={key}

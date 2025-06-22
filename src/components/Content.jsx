@@ -21,7 +21,7 @@ const Content = () => {
                 chart: 'mostPopular',
                 regionCode: 'ID',
                 videoCategoryId: '0',
-                maxResults: 1,
+                maxResults: 40,
                 key: apiKey,
             },
         })

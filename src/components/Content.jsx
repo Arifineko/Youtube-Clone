@@ -21,7 +21,7 @@ const Content = () => {
                 chart: 'mostPopular',
                 regionCode: 'ID',
                 videoCategoryId: '0',
-                maxResults: 50,
+                maxResults: 1,
                 key: apiKey,
             },
         })
@@ -59,7 +59,8 @@ const Content = () => {
     const timeSince = (dateString) => dayjs(dateString).fromNow()
 
     return (
-        <div className='md:pl-20 mb-20 md:mb-0 pt-14 md:pt-16 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
+
+        <div className='md:pl-20 mb-20 md:mb-0 pt-23 md:pt-25 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
             {youtube.map((video, key) => (
                 <div key={key}>
                     <div className="md:max-w-sm">

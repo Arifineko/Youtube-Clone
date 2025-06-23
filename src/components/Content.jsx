@@ -21,7 +21,7 @@ const Content = () => {
                 chart: 'mostPopular',
                 regionCode: 'ID',
                 videoCategoryId: '0',
-                maxResults: 40,
+                maxResults: 4,
                 key: apiKey,
             },
         })
@@ -29,10 +29,7 @@ const Content = () => {
                 const items = res.data.items
                 setYoutube(items)
 
-                // Extract unique channel IDs
                 const channelIds = [...new Set(items.map(item => item.snippet.channelId))]
-
-                // Fetch channel details in bulk
                 const channelRes = await axios.get(channelURL, {
                     params: {
                         part: 'snippet',
@@ -41,7 +38,6 @@ const Content = () => {
                     }
                 })
 
-                // Create a map of channelId => profile image URL
                 const profileMap = {}
                 channelRes.data.items.forEach(channel => {
                     profileMap[channel.id] = channel.snippet.thumbnails.default.url
@@ -60,7 +56,7 @@ const Content = () => {
 
     return (
 
-        <div className='md:pl-20 mb-20 md:mb-0 pt-23 md:pt-25 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
+        <div className='md:pl-20 mb-20 md:mb-0 pt-23 md:pt-30 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
             {youtube.map((video, key) => (
                 <div key={key}>
                     <div className="md:max-w-sm">

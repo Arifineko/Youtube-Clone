@@ -15,7 +15,7 @@ export const sidebarData = [
         image: subscriptionIcon
     },
     {
-        name: 'Your',
+        name: 'You',
         image: profileIconMobile
     }
 

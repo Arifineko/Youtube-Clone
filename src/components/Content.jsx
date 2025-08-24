@@ -12,7 +12,7 @@ const Content = () => {
     const channelURL = 'https://www.googleapis.com/youtube/v3/channels'
 
     const [youtube, setYoutube] = useState([])
-    const [channelPics, setChannelPics] = useState({}) // Map channelId => profile image URL
+    const [channelPics, setChannelPics] = useState({})
 
     useEffect(() => {
         axios.get(videoURL, {
@@ -87,7 +87,7 @@ const Content = () => {
                                 href={`https://www.youtube.com/watch?v=${video.id}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className='text-sm font-semibold'
+                                className='line-clamp-2 text-sm font-semibold'
                             >
                                 {video.snippet.title}
                             </a>

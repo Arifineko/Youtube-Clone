@@ -2,6 +2,7 @@ import youtubeLogo from '../assets/logo/youtube-logo.svg'
 import ButtonMenu from './ButtonMenu'
 import { sidebarDataActive } from '../data/sidebarData'
 import SignButton from './SignButton'
+import { NavLink } from 'react-router-dom'
 
 const SidebarActive = () => {
     return (
@@ -13,10 +14,14 @@ const SidebarActive = () => {
             <div className='mt-15 overflow-y-auto mb-4'>
                 {sidebarDataActive.map((icon, key) => {
                     return (
-                        <div key={key} className='flex gap-6 p-4 ml-2'>
+                        <NavLink
+                            key={key}
+                            className='flex gap-6 p-4 ml-2'
+                            to={icon.path}
+                        >
                             <img className='h-6 w-6' src={icon.image} alt="" />
                             <p>{icon.name}</p>
-                        </div>
+                        </NavLink>
                     )
                 })}
             </div>

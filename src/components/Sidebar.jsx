@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { sidebarData } from '../data/sidebarData.js'
 
 const Sidebar = () => {
@@ -6,10 +7,14 @@ const Sidebar = () => {
             <div className='flex justify-center md:flex-col gap-4 pt-2'>
                 {sidebarData.map((icon, key) => {
                     return (
-                        <div key={key} className="flex flex-col gap-1 justify-center items-center py-2 px-5 hover:bg-gray-200 cursor-pointer text-[10px]">
+                        <NavLink
+                            key={key}
+                            className="flex flex-col gap-1 justify-center items-center py-2 px-5 hover:bg-gray-200 cursor-pointer text-[10px]"
+                            to={icon.path}
+                        >
                             <img className='h-6 w-6' src={icon.image} alt="" />
                             <p>{icon.name}</p>
-                        </div>
+                        </NavLink>
                     )
                 })}
             </div>

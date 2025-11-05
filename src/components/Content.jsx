@@ -7,7 +7,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
 const Content = () => {
-    const apiKey = 'AIzaSyCF2aMToSRZUCBux8O39qGBv1ZLS8b4ETg'
+    const apiKey = import.meta.env.VITE_API_KEY
     const videoURL = 'https://www.googleapis.com/youtube/v3/videos'
     const channelURL = 'https://www.googleapis.com/youtube/v3/channels'
 

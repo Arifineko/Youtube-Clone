@@ -6,7 +6,7 @@ import ButtonMenu from './ButtonMenu'
 import SignButton from './SignButton.jsx'
 import HeaderCatagories from './HeaderCatagories.jsx'
 
-const Header = () => {
+const Header = ({ catagory }) => {
     return (
         <>
             <div className='flex z-10 bg-white justify-between px-4 md:py-2 py-4 items-center fixed left-0 right-0 top-0'>
@@ -35,7 +35,7 @@ const Header = () => {
                     <SignButton />
                 </div>
             </div>
-            <HeaderCatagories />
+            {catagory && <HeaderCatagories />}
         </>
     )
 }

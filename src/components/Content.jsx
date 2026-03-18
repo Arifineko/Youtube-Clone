@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import numeral from 'numeral'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -13,6 +14,8 @@ const Content = () => {
 
     const [youtube, setYoutube] = useState([])
     const [channelPics, setChannelPics] = useState({})
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(videoURL, {
@@ -58,20 +61,15 @@ const Content = () => {
 
         <div className='md:pl-20 mb-20 md:mb-0 pt-23 md:pt-30 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
             {youtube.map((video, key) => (
-                <div key={key}>
+                <div key={key} onClick={() => navigate(`/watch?v=${video.id}`)} className='cursor-pointer'>
                     <div className="md:max-w-sm">
                         <div className="aspect-video rounded-xl md:overflow-hidden">
-                            <a
-                                href={`https://www.youtube.com/watch?v=${video.id}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <img
-                                    src={video.snippet.thumbnails.high.url}
-                                    alt=''
-                                    className="w-full h-full object-cover"
-                                />
-                            </a>
+
+                            <img
+                                src={video.snippet.thumbnails.high.url}
+                                alt=''
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                     </div>
                     <div className='grid grid-cols-[48px_1fr] px-2 md:px-0 mt-3'>

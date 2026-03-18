@@ -11,10 +11,10 @@ const Watch = () => {
     const { menu } = useContext(MenuContext)
     const videoId = searchParams.get('v')
 
-    const { video: dataVideo, channel: channelPics, loading, error } = useVideoDetails(videoId)
+    const { data, isLoading, isError } = useVideoDetails(videoId)
 
-    if (loading) return <div className="pt-24 pl-20 italic">Loading...</div>
-    if (error) return <div className="pt-24 pl-20 text-red-500">Error loading video.</div>
+    if (isLoading) return <div className="pt-24 pl-20 italic">Loading...</div>
+    if (isError) return <div className="pt-24 pl-20 text-red-500">Error loading video.</div>
 
     return (
         <>
@@ -33,23 +33,23 @@ const Watch = () => {
                     </div>
                 </div>
                 <div className="w-full">
-                    <h1>{dataVideo?.snippet?.title}</h1>
+                    <h1>{data?.video?.snippet?.title}</h1>
                     <div>
                         <img
-                            src={channelPics?.snippet?.thumbnails?.default?.url}
+                            src={data?.channelItems?.snippet?.thumbnails?.default?.url}
                             alt=""
                             className="w-10 h-10 rounded-full"
                         />
                         <div>
-                            <p>{dataVideo?.snippet?.channelTitle}</p>
-                            <p>{formatSubscribers(channelPics?.statistics?.subscriberCount)}</p>
+                            <p>{data?.video?.snippet?.channelTitle}</p>
+                            <p>{formatSubscribers(data?.channelItems?.statistics?.subscriberCount)}</p>
                         </div>
                         <button>Subscribe</button>
                     </div>
                     <div>
-                        <p>{formatViews(dataVideo?.statistics?.viewCount)}</p>
-                        <p>{timeSince(dataVideo?.snippet?.publishedAt)}</p>
-                        <p>{dataVideo?.snippet?.description}</p>
+                        <p>{formatViews(data?.video?.statistics?.viewCount)}</p>
+                        <p>{timeSince(data?.video?.snippet?.publishedAt)}</p>
+                        <p>{data?.video?.snippet?.description}</p>
                     </div>
                 </div>
             </div>

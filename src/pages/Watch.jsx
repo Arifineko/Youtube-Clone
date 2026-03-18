@@ -4,6 +4,8 @@ import Header from '../components/Header'
 import { MenuContext } from '../context/MenuContext'
 import SidebarActive from '../components/SidebarActive'
 import axios from 'axios'
+import { formatViews, formatSubscribers, timeSince } from '../utils/format'
+import { API_KEY, VIDEO_URL, CHANNEL_URL } from '../utils/youtubeApi'
 
 const Watch = () => {
     const [searchParams] = useSearchParams()
@@ -11,31 +13,28 @@ const Watch = () => {
     const [dataVideo, setDataVideo] = useState()
     const [channelPics, setChannelPics] = useState()
 
-    const apiKey = import.meta.env.VITE_API_KEY
-    const videoURL = 'https://www.googleapis.com/youtube/v3/videos'
-    const channelURL = 'https://www.googleapis.com/youtube/v3/channels'
 
     const videoId = searchParams.get('v')
 
     useEffect(() => {
         async function getDetailsVideo() {
             try {
-                const response = await axios.get(videoURL, {
+                const response = await axios.get(VIDEO_URL, {
                     params: {
                         part: 'snippet,statistics,contentDetails',
                         id: videoId,
-                        key: apiKey,
+                        key: API_KEY,
                     },
                 })
                 const videoData = response.data.items[0]
                 setDataVideo(videoData)
 
                 if (videoData) {
-                    const channelRes = await axios.get(channelURL, {
+                    const channelRes = await axios.get(CHANNEL_URL, {
                         params: {
                             part: 'snippet,statistics',
                             id: videoData.snippet.channelId,
-                            key: apiKey
+                            key: API_KEY
                         }
                     })
                     setChannelPics(channelRes.data.items[0])
@@ -64,7 +63,6 @@ const Watch = () => {
                         />
                     </div>
                 </div>
-
                 <div className="w-full">
                     <h1>{dataVideo?.snippet?.title}</h1>
                     <div>
@@ -75,13 +73,13 @@ const Watch = () => {
                         />
                         <div>
                             <p>{dataVideo?.snippet?.channelTitle}</p>
-                            <p>{channelPics?.statistics?.subscriberCount}</p>
+                            <p>{formatSubscribers(channelPics?.statistics?.subscriberCount)}</p>
                         </div>
                         <button>Subscribe</button>
                     </div>
                     <div>
-                        <p>{dataVideo?.statistics?.viewCount}</p>
-                        <p>{dataVideo?.snippet?.publishedAt}</p>
+                        <p>{formatViews(dataVideo?.statistics?.viewCount)}</p>
+                        <p>{timeSince(dataVideo?.snippet?.publishedAt)}</p>
                         <p>{dataVideo?.snippet?.description}</p>
                     </div>
                 </div>

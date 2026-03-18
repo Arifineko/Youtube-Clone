@@ -1,31 +1,22 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import numeral from 'numeral'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-
-dayjs.extend(relativeTime)
+import { API_KEY, VIDEO_URL, CHANNEL_URL } from '../utils/youtubeApi'
+import VideoCard from './VideoCard'
 
 const Content = () => {
-    const apiKey = import.meta.env.VITE_API_KEY
-    const videoURL = 'https://www.googleapis.com/youtube/v3/videos'
-    const channelURL = 'https://www.googleapis.com/youtube/v3/channels'
 
     const [youtube, setYoutube] = useState([])
     const [channelPics, setChannelPics] = useState({})
 
-    const navigate = useNavigate()
-
     useEffect(() => {
-        axios.get(videoURL, {
+        axios.get(VIDEO_URL, {
             params: {
                 part: 'snippet,statistics,contentDetails',
                 chart: 'mostPopular',
                 regionCode: 'ID',
                 videoCategoryId: '0',
                 maxResults: 45,
-                key: apiKey,
+                key: API_KEY,
             },
         })
             .then(async (res) => {
@@ -33,11 +24,11 @@ const Content = () => {
                 setYoutube(items)
 
                 const channelIds = [...new Set(items.map(item => item.snippet.channelId))]
-                const channelRes = await axios.get(channelURL, {
+                const channelRes = await axios.get(CHANNEL_URL, {
                     params: {
                         part: 'snippet',
                         id: channelIds.join(','),
-                        key: apiKey
+                        key: API_KEY
                     }
                 })
 
@@ -52,51 +43,14 @@ const Content = () => {
             })
     }, [])
 
-    const formatViews = (numberString) => {
-        return numeral(numberString).format('0.[0]a') + ' views'
-    }
-    const timeSince = (dateString) => dayjs(dateString).fromNow()
-
     return (
-
         <div className='md:pl-20 mb-20 md:mb-0 pt-23 md:pt-30 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-rows-1 gap-4 gap-y-6 md:p-5'>
             {youtube.map((video, key) => (
-                <div key={key} onClick={() => navigate(`/watch?v=${video.id}`)} className='cursor-pointer'>
-                    <div className="md:max-w-sm">
-                        <div className="aspect-video rounded-xl md:overflow-hidden">
-
-                            <img
-                                src={video.snippet.thumbnails.high.url}
-                                alt=''
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
-                    <div className='grid grid-cols-[48px_1fr] px-2 md:px-0 mt-3'>
-                        <div>
-                            <img
-                                className='rounded-full w-10'
-                                src={channelPics[video.snippet.channelId] || ''}
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <a
-                                href={`https://www.youtube.com/watch?v=${video.id}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className='line-clamp-2 text-sm font-semibold'
-                            >
-                                {video.snippet.title}
-                            </a>
-                            <p className='text-sm text-gray-500'>{video.snippet.channelTitle}</p>
-                            <div className='flex gap-2 text-gray-500'>
-                                <p className='text-sm'>{formatViews(video.statistics.viewCount)}</p>
-                                <p className='text-sm'>• {timeSince(video.snippet.publishedAt)}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <VideoCard
+                    key={key}
+                    video={video}
+                    channelPic={channelPics[video.snippet.channelId]}
+                />
             ))}
         </div>
     )

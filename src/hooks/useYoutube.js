@@ -1,68 +1,41 @@
-import { useState, useEffect } from "react";
 import { fetchVideos, fetchChannels, fetchVideoById } from "../services/youtubeService";
+import { useQuery } from "@tanstack/react-query";
 
 export const useTrendingVideos = () => {
-    const [videos, setVideos] = useState([]);
-    const [channelPics, setChannelPics] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    return useQuery({
+        queryKey: ['videos', 'all'],
+        queryFn: async () => {
 
-    useEffect(() => {
-        const loadTrending = async () => {
-            try {
-                setLoading(true);
-                const videoItems = await fetchVideos();
-                setVideos(videoItems);
+            const videoItems = await fetchVideos();
+            const channelIds = [...new Set(videoItems.map(item => item.snippet.channelId))];
+            const channelItems = await fetchChannels(channelIds);
 
-                const channelIds = [...new Set(videoItems.map(item => item.snippet.channelId))];
-                const channelItems = await fetchChannels(channelIds);
+            const profileMap = {};
+            channelItems.forEach(channel => {
+                profileMap[channel.id] = channel.snippet.thumbnails.default.url;
+            });
 
-                const profileMap = {};
-                channelItems.forEach(channel => {
-                    profileMap[channel.id] = channel.snippet.thumbnails.default.url;
-                });
-                setChannelPics(profileMap);
-            } catch (err) {
-                setError(err);
-            } finally {
-                setLoading(false);
+            return {
+                videos: videoItems,
+                channelPics: profileMap
             }
-        };
-
-        loadTrending();
-    }, []);
-
-    return { videos, channelPics, loading, error };
+        },
+        staleTime: 1000 * 60 * 20
+    })
 };
 
 export const useVideoDetails = (videoId) => {
-    const [video, setVideo] = useState(null);
-    const [channel, setChannel] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        if (!videoId) return;
-
-        const loadDetails = async () => {
-            try {
-                setLoading(true);
-                const videoData = await fetchVideoById(videoId);
-                setVideo(videoData);
-
-                if (videoData) {
-                    const channelItems = await fetchChannels(videoData.snippet.channelId);
-                    setChannel(channelItems[0]);
-                }
-            } catch (err) {
-                setError(err);
-            } finally {
-                setLoading(false);
+    return useQuery({
+        queryKey: ['video', videoId],
+        queryFn: async () => {
+            const videoData = await fetchVideoById(videoId);
+            const channelItems = await fetchChannels(videoData.snippet.channelId);
+            return {
+                video: videoData,
+                channelItems: channelItems[0]
             }
-        };
-
-        loadDetails();
-    }, [videoId]);
-
-    return { video, channel, loading, error };
+        }
+        ,
+        staleTime: 1000 * 60 * 20
+    })
 };

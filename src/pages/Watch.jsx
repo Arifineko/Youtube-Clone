@@ -1,51 +1,20 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { MenuContext } from '../context/MenuContext'
 import SidebarActive from '../components/SidebarActive'
-import axios from 'axios'
 import { formatViews, formatSubscribers, timeSince } from '../utils/format'
-import { API_KEY, VIDEO_URL, CHANNEL_URL } from '../utils/youtubeApi'
+import { useVideoDetails } from '../hooks/useYoutube'
 
 const Watch = () => {
     const [searchParams] = useSearchParams()
     const { menu } = useContext(MenuContext)
-    const [dataVideo, setDataVideo] = useState()
-    const [channelPics, setChannelPics] = useState()
-
-
     const videoId = searchParams.get('v')
 
-    useEffect(() => {
-        async function getDetailsVideo() {
-            try {
-                const response = await axios.get(VIDEO_URL, {
-                    params: {
-                        part: 'snippet,statistics,contentDetails',
-                        id: videoId,
-                        key: API_KEY,
-                    },
-                })
-                const videoData = response.data.items[0]
-                setDataVideo(videoData)
+    const { video: dataVideo, channel: channelPics, loading, error } = useVideoDetails(videoId)
 
-                if (videoData) {
-                    const channelRes = await axios.get(CHANNEL_URL, {
-                        params: {
-                            part: 'snippet,statistics',
-                            id: videoData.snippet.channelId,
-                            key: API_KEY
-                        }
-                    })
-                    setChannelPics(channelRes.data.items[0])
-                }
-            } catch (error) {
-                console.error("Error fetching video/channel details:", error)
-            }
-        }
-
-        getDetailsVideo()
-    }, [videoId])
+    if (loading) return <div className="pt-24 pl-20 italic">Loading...</div>
+    if (error) return <div className="pt-24 pl-20 text-red-500">Error loading video.</div>
 
     return (
         <>

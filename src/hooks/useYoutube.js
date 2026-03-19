@@ -20,7 +20,7 @@ export const useTrendingVideos = () => {
                 channelPics: profileMap
             }
         },
-        staleTime: 1000 * 60 * 20
+        staleTime: 1000 * 60 * 10
     })
 };
 
@@ -36,6 +36,6 @@ export const useVideoDetails = (videoId) => {
             }
         }
         ,
-        staleTime: 1000 * 60 * 20
+        staleTime: 1000 * 60 * 10
     })
 };

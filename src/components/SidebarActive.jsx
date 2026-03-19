@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 const SidebarActive = () => {
     return (
-        <div className='fixed flex flex-col z-30 left-0 top-0 bottom-0 bg-white w-55'>
+        <div className='fixed flex flex-col z-60 left-0 top-0 bottom-0 bg-white w-55'>
             <div className='flex gap-4 p-4 fixed left-0 top-0'>
                 <ButtonMenu />
                 <img src={youtubeLogo} alt="" />

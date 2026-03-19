@@ -21,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path='/watch' element={<Watch />} />
+              <Route path='/results' element={<Result />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

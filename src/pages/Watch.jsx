@@ -22,8 +22,8 @@ const Watch = () => {
             {menu && <SidebarActive />}
 
             <div className="pt-12">
-                <div className="w-full">
-                    <div className="w-full aspect-video overflow-hidden">
+                <div className="w-full flex justify-center">
+                    <div className="w-full h-2/5 md:h-[calc(100vh-3rem)] aspect-video overflow-hidden">
                         <iframe
                             className="w-full h-full"
                             src={`https://www.youtube.com/embed/${videoId}`}
@@ -32,7 +32,7 @@ const Watch = () => {
                         />
                     </div>
                 </div>
-                <div className="w-full">
+                <div className="w-full mt-4">
                     <h1>{data?.video?.snippet?.title}</h1>
                     <div>
                         <img

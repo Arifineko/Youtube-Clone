@@ -25,7 +25,7 @@ const Header = ({ catagory }) => {
 
     return (
         <>
-            <div className='flex z-10 bg-white justify-between px-4 md:py-2 py-4 items-center fixed left-0 right-0 top-0'>
+            <div className='flex z-50 bg-white justify-between px-4 md:py-2 py-4 items-center fixed left-0 right-0 top-0'>
                 <div className='flex gap-4'>
                     <ButtonMenu />
                     <img src={youtubeLogo} alt="" />

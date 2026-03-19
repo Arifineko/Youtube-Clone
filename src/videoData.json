@@ -1,0 +1,152 @@
+[
+    {
+        "id": {
+            "videoId": "vid_001"
+        },
+        "snippet": {
+            "title": "Tutorial React JS Bahasa Indonesia - Full Course 2026",
+            "channelTitle": "Web Dev Indo",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/react/480/360"
+                }
+            },
+            "publishedAt": "2026-01-10T08:00:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_002"
+        },
+        "snippet": {
+            "title": "Tips Lolos MSIB UI/UX Design & Web Development",
+            "channelTitle": "Career Path",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/design/480/360"
+                }
+            },
+            "publishedAt": "2026-02-15T12:00:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_003"
+        },
+        "snippet": {
+            "title": "Membangun Portofolio Frontend Developer yang Dilirik HRD Perusahaan Besar",
+            "channelTitle": "Dev Community",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/portfolio/480/360"
+                }
+            },
+            "publishedAt": "2026-03-01T09:30:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_004"
+        },
+        "snippet": {
+            "title": "Apa itu Tailwind CSS? Kenapa Harus Pakai?",
+            "channelTitle": "Style Code",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/tailwind/480/360"
+                }
+            },
+            "publishedAt": "2026-03-05T15:00:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_005"
+        },
+        "snippet": {
+            "title": "Setup VS Code Terbaik untuk Frontend 2026",
+            "channelTitle": "Tech Setup",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/vscode/480/360"
+                }
+            },
+            "publishedAt": "2026-03-10T07:00:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_006"
+        },
+        "snippet": {
+            "title": "Cara Integrasi YouTube API di React Application",
+            "channelTitle": "API Master",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/api/480/360"
+                }
+            },
+            "publishedAt": "2026-03-12T11:45:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_007"
+        },
+        "snippet": {
+            "title": "Debugging Javascript Error 403 Forbidden",
+            "channelTitle": "Error Fixer",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/error/480/360"
+                }
+            },
+            "publishedAt": "2026-03-14T14:20:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_008"
+        },
+        "snippet": {
+            "title": "Mengenal Clean Code dalam Pengembangan Frontend",
+            "channelTitle": "Pro Coder",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/clean/480/360"
+                }
+            },
+            "publishedAt": "2026-03-15T10:10:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_009"
+        },
+        "snippet": {
+            "title": "UI/UX Case Study: Re-designing Wedding Vendor App",
+            "channelTitle": "Design Lab",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/wedding/480/360"
+                }
+            },
+            "publishedAt": "2026-03-16T16:00:00Z"
+        }
+    },
+    {
+        "id": {
+            "videoId": "vid_010"
+        },
+        "snippet": {
+            "title": "State Management: Redux vs Context API vs Zustand",
+            "channelTitle": "React Advanced",
+            "thumbnails": {
+                "high": {
+                    "url": "https://picsum.photos/seed/state/480/360"
+                }
+            },
+            "publishedAt": "2026-03-17T13:30:00Z"
+        }
+    }
+]

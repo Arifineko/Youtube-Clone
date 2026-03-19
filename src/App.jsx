@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound'
 import Watch from './pages/Watch'
 import { useState } from 'react'
 import { MenuContext } from './context/MenuContext'
+import { Result } from './pages/Result'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient()
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path='/watch' element={<Watch />} />
+              <Route path='/results' element={<Result />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

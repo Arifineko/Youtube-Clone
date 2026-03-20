@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { MenuContext } from '../context/MenuContext'
@@ -11,6 +11,7 @@ import VideoInfo from '../components/VideoCard/VideoInfo'
 const Watch = () => {
     const [searchParams] = useSearchParams()
     const { menu } = useContext(MenuContext)
+    const [isExpanded, setIsExpanded] = useState(false)
     const videoId = searchParams.get('v')
 
     const { data, isLoading, isError } = useVideoDetails(videoId)
@@ -77,12 +78,20 @@ const Watch = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div className='bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer'>
+                            <div
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                className='bg-gray-100 p-3 rounded-xl hover:bg-gray-200 transition-colors cursor-pointer'
+                            >
                                 <div className='flex gap-2 font-bold text-sm mb-1'>
                                     <span>{formatViews(data?.video?.statistics?.viewCount)}</span>
                                     <span>{timeSince(data?.video?.snippet?.publishedAt)}</span>
                                 </div>
-                                <p className='text-sm whitespace-pre-wrap'>{data?.video?.snippet?.description}</p>
+                                <p className={`text-sm whitespace-pre-wrap ${!isExpanded ? 'line-clamp-3' : ''}`}>
+                                    {data?.video?.snippet?.description}
+                                </p>
+                                <button className='font-medium text-sm mt-1 hover:text-gray-600 transition-colors'>
+                                    {isExpanded ? 'Show less' : '...more'}
+                                </button>
                             </div>
                         </div>
                     </div>

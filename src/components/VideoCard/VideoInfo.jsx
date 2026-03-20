@@ -9,7 +9,7 @@ const VideoInfo = ({ video, channelPic, type = 'home' }) => {
                         {video.snippet.title}
                     </h3>
                 </div>
-                <div className="text-xs text-gray-400 flex items-center gap-1">
+                <div className="text-xs text-gray-600 flex items-center gap-1">
                     <span>{formatViews(video.statistics?.viewCount || "123456")}</span>
                     <span>•</span>
                     <span>{timeSince(video.snippet.publishedAt)}</span>
@@ -26,7 +26,7 @@ const VideoInfo = ({ video, channelPic, type = 'home' }) => {
                         {video.snippet.channelTitle}
                     </span>
                 </div>
-                <p className="text-sm text-gray-400 line-clamp-1 md:line-clamp-2">
+                <p className="text-sm text-gray-600 line-clamp-1 md:line-clamp-2">
                     {video.snippet.description}
                 </p>
             </div>

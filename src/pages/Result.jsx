@@ -27,7 +27,7 @@ export const Result = () => {
                 {isLoading && <div className="pt-24 pl-20 italic">Loading...</div>}
                 {isError && <div className="pt-24 pl-20 text-red-500">Error loading videos.</div>}
                 {
-                    data?.items.map((video) => (
+                    data?.items?.map((video) => (
                         <Link to={`/watch?v=${video.id.videoId}`} className='cursor-pointer'>
                             <div key={video.id.videoId} className="flex flex-col md:flex-row gap-4 cursor-pointer">
                                 <div className="w-full md:w-2/5 flex-shrink-0">

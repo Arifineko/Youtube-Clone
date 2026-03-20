@@ -2,7 +2,7 @@
 const VideoThumbnail = ({ video, className }) => {
     return (
         <div className={className || "md:max-w-sm"}>
-            <div className="aspect-video rounded-xl md:overflow-hidden relative z-0">
+            <div className="aspect-video rounded-lg md:overflow-hidden relative z-0">
                 <img
                     src={video?.snippet?.thumbnails?.high?.url}
                     alt=''

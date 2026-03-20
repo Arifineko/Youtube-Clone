@@ -65,7 +65,7 @@ const Watch = () => {
                                             <span className='text-sm font-bold'>{formatLikes(data?.video?.statistics?.likeCount)}</span>
                                         </button>
                                         <button className='py-2 px-3 hover:bg-gray-200 rounded-r-full transition-colors'>
-                                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7-1.38 9a2 2 0 0 0 2 2.3zM17 2h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>
+                                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'rotate(180deg)' }}><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                                         </button>
                                     </div>
                                     <button className='flex items-center gap-2 bg-gray-100 py-2 px-4 rounded-full hover:bg-gray-200 transition-colors'>
@@ -88,19 +88,17 @@ const Watch = () => {
                     </div>
                     <div className="w-full lg:w-[400px] md:px-6 lg:px-0 md:grid md:grid-cols-3 lg:flex flex flex-col gap-3">
                         {videoCategory?.videos?.map((video) => (
-                            <>
-                                <Link to={`/watch?v=${video.id}`} key={video.id} className='flex gap-2 flex-col lg:flex-row cursor-pointer'>
-                                    <VideoThumbnail
-                                        video={video}
-                                        className="w-full lg:w-2/5"
-                                    />
-                                    <VideoInfo
-                                        video={video}
-                                        type="watch"
-                                        channelPic={videoCategory?.channelPics?.[video.snippet.channelId]}
-                                    />
-                                </Link>
-                            </>
+                            <Link to={`/watch?v=${video.id}`} key={video.id} className='flex gap-2 flex-col lg:flex-row cursor-pointer'>
+                                <VideoThumbnail
+                                    video={video}
+                                    className="w-full lg:w-2/5"
+                                />
+                                <VideoInfo
+                                    video={video}
+                                    type="watch"
+                                    channelPic={videoCategory?.channelPics?.[video.snippet.channelId]}
+                                />
+                            </Link>
                         ))}
                     </div>
                 </div>

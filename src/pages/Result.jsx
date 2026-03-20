@@ -7,7 +7,7 @@ import Sidebar from "../components/Sidebar";
 import VideoInfo from "../components/VideoCard/VideoInfo";
 import VideoThumbnail from "../components/VideoCard/VideoThumbnail";
 import { useSearchVideo } from "../hooks/useYoutube";
-import SkeletonResultCard from "../components/SkeletonResultCard";
+import SkeletonResultCard from "../components/skeleton/SkeletonResultCard";
 
 export const Result = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -22,9 +22,7 @@ export const Result = () => {
             <div className="md:pl-20 mb-20 md:mb-0 pt-23 md:pt-30 gap-4 flex flex-col md:p-5">
                 {isLoading && (
                     <div className="flex flex-col gap-6">
-                        {[...Array(6)].map((_, i) => (
-                            <SkeletonResultCard key={i} />
-                        ))}
+                        <SkeletonResultCard />
                     </div>
                 )}
                 {isError && <div className="pt-24 pl-20 text-red-500">Error loading videos.</div>}

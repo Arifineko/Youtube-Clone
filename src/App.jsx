@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { MenuContext } from './context/MenuContext'
 import { Result } from './pages/Result'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ScrollToTop from './components/ScrollToTop';
 
 const queryClient = new QueryClient()
 
@@ -18,6 +19,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <MenuContext.Provider value={{ menu, setMenu }}>
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path='/watch' element={<Watch />} />

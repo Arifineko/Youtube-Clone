@@ -7,10 +7,10 @@ const VideoCard = ({ video, channelPic }) => {
     return (
         <Link to={`/watch?v=${video.id}`} className='cursor-pointer'>
             <VideoThumbnail video={video} />
-            <VideoInfo 
-                video={video} 
-                channelPic={channelPic} 
-                type="home" 
+            <VideoInfo
+                video={video}
+                channelPic={channelPic}
+                type="home"
             />
         </Link>
     )

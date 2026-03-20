@@ -26,7 +26,7 @@ const VideoInfo = ({ video, channelPic, type = 'home' }) => {
                         {video.snippet.channelTitle}
                     </span>
                 </div>
-                <p className="text-sm text-gray-600 line-clamp-1 md:line-clamp-2">
+                <p className="hidden lg:block text-sm text-gray-600 line-clamp-1 md:line-clamp-2">
                     {video.snippet.description}
                 </p>
             </div>

@@ -1,4 +1,4 @@
-import { fetchVideos, fetchChannels, fetchVideoById, searchVideo } from "../services/youtubeService";
+import { fetchVideos, fetchChannels, fetchVideoById, searchVideo, fetchVideoByCatagory } from "../services/youtubeService";
 import { useQuery } from "@tanstack/react-query";
 import { getChannelPicture } from "../utils/videoData";
 
@@ -18,6 +18,23 @@ export const useTrendingVideos = () => {
         staleTime: 1000 * 60 * 10
     })
 };
+
+export const useCategoryVideos = (categoryId) => {
+    return useQuery({
+        queryKey: ['videos', categoryId],
+        queryFn: async () => {
+            const videoItems = await fetchVideoByCatagory(categoryId)
+            const profileMap = await getChannelPicture(videoItems)
+
+            return {
+                videos: videoItems,
+                channelPics: profileMap
+            }
+        },
+        staleTime: 1000 * 60 * 10,
+        enabled: !!categoryId
+    })
+}
 
 export const useVideoDetails = (videoId) => {
     return useQuery({

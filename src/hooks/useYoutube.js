@@ -1,5 +1,6 @@
-import { fetchVideos, fetchChannels, fetchVideoById } from "../services/youtubeService";
+import { fetchVideos, fetchChannels, fetchVideoById, searchVideo } from "../services/youtubeService";
 import { useQuery } from "@tanstack/react-query";
+import { getChannelPicture } from "../utils/videoData";
 
 export const useTrendingVideos = () => {
     return useQuery({
@@ -7,13 +8,7 @@ export const useTrendingVideos = () => {
         queryFn: async () => {
 
             const videoItems = await fetchVideos();
-            const channelIds = [...new Set(videoItems.map(item => item.snippet.channelId))];
-            const channelItems = await fetchChannels(channelIds);
-
-            const profileMap = {};
-            channelItems.forEach(channel => {
-                profileMap[channel.id] = channel.snippet.thumbnails.default.url;
-            });
+            const profileMap = await getChannelPicture(videoItems)
 
             return {
                 videos: videoItems,
@@ -28,10 +23,10 @@ export const useVideoDetails = (videoId) => {
     return useQuery({
         queryKey: ['video', videoId],
         queryFn: async () => {
-            const videoData = await fetchVideoById(videoId);
-            const channelItems = await fetchChannels(videoData.snippet.channelId);
+            const videoItems = await fetchVideoById(videoId);
+            const channelItems = await fetchChannels(videoItems.snippet.channelId);
             return {
-                video: videoData,
+                video: videoItems,
                 channelItems: channelItems[0]
             }
         }
@@ -39,3 +34,21 @@ export const useVideoDetails = (videoId) => {
         staleTime: 1000 * 60 * 10
     })
 };
+
+export const useSearchVideo = (searchQuery) => {
+    return useQuery({
+        queryKey: ['videos', searchQuery],
+        queryFn: async () => {
+            const response = await searchVideo(searchQuery)
+            const videoItems = response.data.items;
+            const profileMap = await getChannelPicture(videoItems)
+
+
+            return {
+                items: videoItems,
+                channelPics: profileMap
+            }
+        },
+        staleTime: 1000 * 60 * 10
+    })
+}

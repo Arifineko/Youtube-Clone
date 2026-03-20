@@ -6,7 +6,7 @@ import ButtonMenu from './ButtonMenu'
 import SignButton from './SignButton.jsx'
 import HeaderCatagories from './HeaderCatagories.jsx'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = ({ catagory }) => {
     const [searchInput, setSearchInput] = useState("")
@@ -28,7 +28,9 @@ const Header = ({ catagory }) => {
             <div className='flex z-50 bg-white justify-between px-4 md:py-2 py-4 items-center fixed left-0 right-0 top-0'>
                 <div className='flex gap-4'>
                     <ButtonMenu />
-                    <img src={youtubeLogo} alt="" />
+                    <Link to={'/'}>
+                        <img src={youtubeLogo} alt="" />
+                    </Link>
                 </div>
                 <div className="flex md:w-full lg:max-w-[600px] md:max-w-[400px] justify-center items-center md:px-4">
                     <form onSubmit={handleSubmit} className="flex grow md:border md:border-gray-300 items-center rounded-full">

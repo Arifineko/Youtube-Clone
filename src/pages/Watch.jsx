@@ -13,46 +13,48 @@ const Watch = () => {
 
     const { data, isLoading, isError } = useVideoDetails(videoId)
 
-    if (isLoading) return <div className="pt-24 pl-20 italic">Loading...</div>
-    if (isError) return <div className="pt-24 pl-20 text-red-500">Error loading video.</div>
-
     return (
         <>
             <Header catagory={false} />
             {menu && <SidebarActive />}
 
-            <div className="pt-12">
-                <div className="w-full flex justify-center">
-                    <div className="w-full h-2/5 md:h-[calc(100vh-3rem)] aspect-video overflow-hidden">
-                        <iframe
-                            className="w-full h-full"
-                            src={`https://www.youtube.com/embed/${videoId}`}
-                            title="YouTube video"
-                            allowFullScreen
-                        />
-                    </div>
-                </div>
-                <div className="w-full mt-4">
-                    <h1>{data?.video?.snippet?.title}</h1>
-                    <div>
-                        <img
-                            src={data?.channelItems?.snippet?.thumbnails?.default?.url}
-                            alt=""
-                            className="w-10 h-10 rounded-full"
-                        />
-                        <div>
-                            <p>{data?.video?.snippet?.channelTitle}</p>
-                            <p>{formatSubscribers(data?.channelItems?.statistics?.subscriberCount)}</p>
+            {isLoading && <div className="pt-24 pl-20 italic">Loading...</div>}
+            {isError && <div className="pt-24 pl-20 text-red-500">Error loading video.</div>}
+
+            {!isLoading && !isError && (
+                <div className="pt-12">
+                    <div className="w-full flex justify-center">
+                        <div className="w-full h-2/5 md:h-[calc(100vh-3rem)] aspect-video overflow-hidden">
+                            <iframe
+                                className="w-full h-full"
+                                src={`https://www.youtube.com/embed/${videoId}`}
+                                title="YouTube video"
+                                allowFullScreen
+                            />
                         </div>
-                        <button>Subscribe</button>
                     </div>
-                    <div>
-                        <p>{formatViews(data?.video?.statistics?.viewCount)}</p>
-                        <p>{timeSince(data?.video?.snippet?.publishedAt)}</p>
-                        <p>{data?.video?.snippet?.description}</p>
+                    <div className="w-full mt-4">
+                        <h1>{data?.video?.snippet?.title}</h1>
+                        <div>
+                            <img
+                                src={data?.channelItems?.snippet?.thumbnails?.default?.url}
+                                alt=""
+                                className="w-10 h-10 rounded-full"
+                            />
+                            <div>
+                                <p>{data?.video?.snippet?.channelTitle}</p>
+                                <p>{formatSubscribers(data?.channelItems?.statistics?.subscriberCount)}</p>
+                            </div>
+                            <button>Subscribe</button>
+                        </div>
+                        <div>
+                            <p>{formatViews(data?.video?.statistics?.viewCount)}</p>
+                            <p>{timeSince(data?.video?.snippet?.publishedAt)}</p>
+                            <p>{data?.video?.snippet?.description}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </>
     )
 }

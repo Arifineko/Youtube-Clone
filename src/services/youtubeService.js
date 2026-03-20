@@ -39,3 +39,15 @@ export const fetchChannels = async (channelIds) => {
     })
     return response.data.items
 }
+
+export const searchVideo = (searchQuery) => {
+    return axios.get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+            part: 'snippet',
+            q: searchQuery,
+            type: 'video',
+            maxResults: 10,
+            key: API_KEY
+        }
+    })
+}

@@ -1,4 +1,3 @@
-import axios from "axios"
 import { Link, useSearchParams } from "react-router-dom"
 import Header from "../components/Header";
 import { useContext } from 'react'
@@ -6,10 +5,9 @@ import { MenuContext } from '../context/MenuContext'
 import SidebarActive from "../components/SidebarActive";
 import Sidebar from "../components/Sidebar";
 import VideoInfo from "../components/VideoCard/VideoInfo";
-import { useQuery } from "@tanstack/react-query";
-import { fetchChannels } from "../services/youtubeService";
 import VideoThumbnail from "../components/VideoCard/VideoThumbnail";
 import { useSearchVideo } from "../hooks/useYoutube";
+import SkeletonResultCard from "../components/SkeletonResultCard";
 
 export const Result = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -17,34 +15,36 @@ export const Result = () => {
     const searchQuery = searchParams.get('search_query')
 
     const { data, isLoading, isError } = useSearchVideo(searchQuery)
-
-
     return (
         <>
             <Header catagory={true} />
             {menu ? <SidebarActive /> : <Sidebar />}
             <div className="md:pl-20 mb-20 md:mb-0 pt-23 md:pt-30 gap-4 flex flex-col md:p-5">
-                {isLoading && <div className="pt-24 pl-20 italic">Loading...</div>}
+                {isLoading && (
+                    <div className="flex flex-col gap-6">
+                        {[...Array(6)].map((_, i) => (
+                            <SkeletonResultCard key={i} />
+                        ))}
+                    </div>
+                )}
                 {isError && <div className="pt-24 pl-20 text-red-500">Error loading videos.</div>}
-                {
-                    data?.items?.map((video) => (
-                        <Link to={`/watch?v=${video.id.videoId}`} className='cursor-pointer'>
-                            <div key={video.id.videoId} className="flex flex-col md:flex-row gap-4 cursor-pointer">
-                                <div className="w-full md:w-2/5 flex-shrink-0">
-                                    <VideoThumbnail
-                                        video={video}
-                                        className="w-full"
-                                    />
-                                </div>
-                                <VideoInfo
+                {!isLoading && !isError && data?.items?.map((video) => (
+                    <Link to={`/watch?v=${video.id.videoId}`} key={video.id.videoId} className='cursor-pointer'>
+                        <div className="flex flex-col md:flex-row gap-4 cursor-pointer">
+                            <div className="w-full md:w-2/5 flex-shrink-0">
+                                <VideoThumbnail
                                     video={video}
-                                    type="search"
-                                    channelPic={data?.channelPics?.[video.snippet.channelId]}
+                                    className="w-full"
                                 />
                             </div>
-                        </Link>
-                    ))
-                }
+                            <VideoInfo
+                                video={video}
+                                type="search"
+                                channelPic={data?.channelPics?.[video.snippet.channelId]}
+                            />
+                        </div>
+                    </Link>
+                ))}
             </div>
         </>
     )

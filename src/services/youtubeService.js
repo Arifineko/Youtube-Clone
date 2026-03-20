@@ -17,6 +17,19 @@ export const fetchVideos = async () => {
     })
     return response.data.items
 }
+export const fetchVideoByCatagory = async (categoryId) => {
+    const response = await axios.get('https://www.googleapis.com/youtube/v3/videos', {
+        params: {
+            part: 'snippet,statistics,contentDetails',
+            chart: 'mostPopular',
+            regionCode: 'ID',
+            videoCategoryId: categoryId,
+            maxResults: 10,
+            key: API_KEY,
+        },
+    });
+    return response.data.items;
+};
 
 export const fetchVideoById = async (videoId) => {
     const response = await axios.get(VIDEO_URL, {

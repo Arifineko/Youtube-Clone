@@ -12,4 +12,8 @@ export const formatSubscribers = (numberString) => {
     return numeral(numberString).format('0.[0]a') + ' subscribers'
 }
 
+export const formatLikes = (numberString) => {
+    return numeral(numberString).format('0.[0]a')
+}
+
 export const timeSince = (dateString) => dayjs(dateString).fromNow()

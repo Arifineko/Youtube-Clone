@@ -7,6 +7,7 @@ import { formatViews, formatSubscribers, timeSince, formatLikes } from '../utils
 import { useCategoryVideos, useVideoDetails } from '../hooks/useYoutube'
 import VideoThumbnail from '../components/VideoCard/VideoThumbnail'
 import VideoInfo from '../components/VideoCard/VideoInfo'
+import SkeletonWatchPage from '../components/skeleton/SkeletonWatchPage'
 
 const Watch = () => {
     const [searchParams] = useSearchParams()
@@ -25,7 +26,7 @@ const Watch = () => {
             <Header catagory={false} />
             {menu && <SidebarActive />}
 
-            {isLoading && <div className="pt-24 pl-20 italic">Loading...</div>}
+            {isLoading && <SkeletonWatchPage />}
             {isError && <div className="pt-24 pl-20 text-red-500">Error loading video.</div>}
 
             {!isLoading && !isError && (

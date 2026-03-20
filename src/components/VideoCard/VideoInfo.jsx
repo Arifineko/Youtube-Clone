@@ -31,7 +31,9 @@ const VideoInfo = ({ video, channelPic, type = 'home' }) => {
                 </p>
             </div>
         )
-    } else if (type === 'watch') {
+    }
+
+    if (type === 'watch') {
         return (
             <div className="flex lg:flex-col mb-4 mt-1 lg:mb-0 lg:mt-0 gap-2 lg:gap-0 flex-1 px-2 md:px-0 md:justify-center">
                 <div className="lg:hidden flex gap-2">

@@ -10,8 +10,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ScrollToTop from './components/ScrollToTop';
 import Subscription from './pages/Subscription'
 import Short from './pages/Short'
+import You from './pages/You'
 
 const queryClient = new QueryClient()
+
 
 function App() {
   const [menu, setMenu] = useState(false)
@@ -28,6 +30,7 @@ function App() {
               <Route path='/results' element={<Result />} />
               <Route path='/shorts' element={<Short />} />
               <Route path='/feed/subscriptions' element={<Subscription />} />
+              <Route path='/feed/you' element={<You />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

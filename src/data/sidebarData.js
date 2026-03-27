@@ -22,7 +22,7 @@ export const sidebarData = [
     {
         name: "You",
         image: profileIconMobile,
-        path: "/you",
+        path: "/feed/you",
     },
 ];
 

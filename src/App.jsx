@@ -8,6 +8,7 @@ import { MenuContext } from './context/MenuContext'
 import { Result } from './pages/Result'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ScrollToTop from './components/ScrollToTop';
+import Subscription from './pages/Subscription'
 
 const queryClient = new QueryClient()
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path='/watch' element={<Watch />} />
               <Route path='/results' element={<Result />} />
+              <Route path='/feed/subscriptions' element={<Subscription />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

@@ -17,7 +17,7 @@ export const sidebarData = [
     {
         name: "Subscriptions",
         image: subscriptionIcon,
-        path: "/subscriptions",
+        path: "/feed/subscriptions",
     },
     {
         name: "You",
@@ -40,6 +40,6 @@ export const sidebarDataActive = [
     {
         name: "Subscriptions",
         image: subscriptionIcon,
-        path: "/subscriptions",
+        path: "/feed/subscriptions",
     },
 ]

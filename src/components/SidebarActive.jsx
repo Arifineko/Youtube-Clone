@@ -6,12 +6,12 @@ import { NavLink } from 'react-router-dom'
 
 const SidebarActive = () => {
     return (
-        <div className='fixed flex flex-col z-60 left-0 top-0 bottom-0 bg-white w-55'>
-            <div className='flex gap-4 p-4 fixed left-0 top-0'>
+        <div className='fixed flex flex-col z-60 left-0 top-15 bottom-0 bg-white w-55'>
+            {/* <div className='flex gap-4 p-4 fixed left-0 top-0'>
                 <ButtonMenu />
                 <img src={youtubeLogo} alt="" />
-            </div>
-            <div className='mt-15 overflow-y-auto mb-4'>
+            </div> */}
+            <div className='overflow-y-auto mb-4'>
                 {sidebarDataActive.map((icon, key) => {
                     return (
                         <NavLink

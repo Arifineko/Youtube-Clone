@@ -60,7 +60,6 @@ export const useSearchVideo = (searchQuery) => {
             const videoItems = response.data.items;
             const profileMap = await getChannelPicture(videoItems)
 
-
             return {
                 items: videoItems,
                 channelPics: profileMap

@@ -1,6 +1,12 @@
 import { formatViews, timeSince } from '../../utils/format'
 
-const VideoInfo = ({ video, channelPic, type = 'home' }) => {
+type VideoInfoProps = {
+    video: any,
+    channelPic: any,
+    type: string
+}
+
+const VideoInfo = ({ video, channelPic, type = 'home' }: VideoInfoProps) => {
     if (type === 'search') {
         return (
             <div className="flex flex-col gap-1 flex-1 px-2 md:px-0">
@@ -10,7 +16,7 @@ const VideoInfo = ({ video, channelPic, type = 'home' }) => {
                     </h3>
                 </div>
                 <div className="text-xs text-gray-600 flex items-center gap-1">
-                    <span>{formatViews(video.statistics?.viewCount || "123456")}</span>
+                    <span>{formatViews(video.statistics?.viewCount || '12345')}</span>
                     <span>•</span>
                     <span>{timeSince(video.snippet.publishedAt)}</span>
                 </div>

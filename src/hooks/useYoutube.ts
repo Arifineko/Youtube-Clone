@@ -1,6 +1,7 @@
 import { fetchVideos, fetchChannels, fetchVideoById, searchVideo, fetchVideoByCatagory } from "../services/youtubeService";
 import { useQuery } from "@tanstack/react-query";
 import { getChannelPicture } from "../utils/videoData";
+import type { CatagoryId } from "../types/params";
 
 export const useTrendingVideos = () => {
     return useQuery({
@@ -19,7 +20,7 @@ export const useTrendingVideos = () => {
     })
 };
 
-export const useCategoryVideos = (categoryId) => {
+export const useCategoryVideos = (categoryId: CatagoryId) => {
     return useQuery({
         queryKey: ['videos', categoryId],
         queryFn: async () => {
@@ -36,7 +37,7 @@ export const useCategoryVideos = (categoryId) => {
     })
 }
 
-export const useVideoDetails = (videoId) => {
+export const useVideoDetails = (videoId: any) => {
     return useQuery({
         queryKey: ['video', videoId],
         queryFn: async () => {
@@ -52,7 +53,7 @@ export const useVideoDetails = (videoId) => {
     })
 };
 
-export const useSearchVideo = (searchQuery) => {
+export const useSearchVideo = (searchQuery: any) => {
     return useQuery({
         queryKey: ['videos', searchQuery],
         queryFn: async () => {

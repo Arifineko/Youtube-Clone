@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { CatagoryId } from "../types/params";
 
 const API_KEY = import.meta.env.VITE_API_KEY
 const VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos'
@@ -17,7 +18,7 @@ export const fetchVideos = async () => {
     })
     return response.data.items
 }
-export const fetchVideoByCatagory = async (categoryId) => {
+export const fetchVideoByCatagory = async (categoryId: CatagoryId) => {
     const response = await axios.get('https://www.googleapis.com/youtube/v3/videos', {
         params: {
             part: 'snippet,statistics,contentDetails',
@@ -31,7 +32,7 @@ export const fetchVideoByCatagory = async (categoryId) => {
     return response.data.items;
 };
 
-export const fetchVideoById = async (videoId) => {
+export const fetchVideoById = async (videoId: any) => {
     const response = await axios.get(VIDEO_URL, {
         params: {
             part: 'snippet,statistics,contentDetails',
@@ -42,7 +43,7 @@ export const fetchVideoById = async (videoId) => {
     return response.data.items[0]
 }
 
-export const fetchChannels = async (channelIds) => {
+export const fetchChannels = async (channelIds: any) => {
     const response = await axios.get(CHANNEL_URL, {
         params: {
             part: 'snippet,statistics',
@@ -53,7 +54,7 @@ export const fetchChannels = async (channelIds) => {
     return response.data.items
 }
 
-export const searchVideo = (searchQuery) => {
+export const searchVideo = (searchQuery: any) => {
     return axios.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
             part: 'snippet',

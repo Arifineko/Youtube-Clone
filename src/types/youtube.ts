@@ -15,7 +15,7 @@ export interface YoutubeSnippet {
         medium: YoutubeThumbnail;
         high: YoutubeThumbnail;
     };
-    tags?: string[];
+    categoryId: string;
 }
 
 export interface YoutubeStatistics {

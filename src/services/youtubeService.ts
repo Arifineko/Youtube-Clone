@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { CatagoryId, SearchQuery, VideoId } from "../types/params";
+import type { CategoryId, SearchQuery, VideoId } from "../types/params";
 
 const API_KEY = import.meta.env.VITE_API_KEY
 const VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos'
@@ -18,7 +18,7 @@ export const fetchVideos = async () => {
     })
     return response.data.items
 }
-export const fetchVideoByCatagory = async (categoryId: CatagoryId) => {
+export const fetchVideoByCatagory = async (categoryId: CategoryId) => {
     const response = await axios.get('https://www.googleapis.com/youtube/v3/videos', {
         params: {
             part: 'snippet,statistics,contentDetails',

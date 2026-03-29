@@ -8,6 +8,7 @@ import { useCategoryVideos, useVideoDetails } from '../hooks/useYoutube'
 import VideoThumbnail from '../components/VideoCard/VideoThumbnail'
 import VideoInfo from '../components/VideoCard/VideoInfo'
 import SkeletonWatchPage from '../components/skeleton/SkeletonWatchPage'
+import type { CategoryId } from '../types/params'
 
 const Watch = () => {
     const [searchParams] = useSearchParams()
@@ -17,7 +18,7 @@ const Watch = () => {
 
     const { data, isLoading, isError } = useVideoDetails(videoId)
 
-    const categoryId = data?.video?.snippet?.categoryId
+    const categoryId: CategoryId = data?.video?.snippet?.categoryId
 
     const { data: videoCategory } = useCategoryVideos(categoryId)
 

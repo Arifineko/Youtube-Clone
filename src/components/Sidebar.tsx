@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { sidebarData } from '../data/sidebarData.js'
+import { sidebarData, type SidebarData } from '../data/sidebarData'
 
 const Sidebar = () => {
     return (
         <div className="fixed left-0 bg-white right-0 bottom-0 md:top-0 md:mt-13.5 md:w-18 z-40">
             <div className='flex justify-center md:flex-col gap-4 pt-2'>
-                {sidebarData.map((icon, key) => {
+                {sidebarData.map((icon: SidebarData, key: number) => {
                     return (
                         <NavLink
                             key={key}

@@ -3,21 +3,21 @@ import searchIcon from '../assets/icon/search-icon.svg'
 import microphoneIcon from '../assets/icon/microphone-icon.svg'
 import settingIcon from '../assets/icon/setting-icon.svg'
 import ButtonMenu from './ButtonMenu'
-import SignButton from './SignButton.jsx'
-import HeaderCatagories from './HeaderCatagories.jsx'
-import { useState } from 'react'
+import SignButton from './SignButton.js'
+import HeaderCatagories from './HeaderCatagories.js'
+import { useState, type ChangeEvent, type FormEvent, type MouseEvent, type SubmitEventHandler } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Header = ({ catagory }) => {
+const Header = ({ category }: { category: boolean }) => {
     const [searchInput, setSearchInput] = useState("")
     const [isSearchOpen, setIsSearchOpen] = useState(false)
     const navigate = useNavigate()
 
-    const handleSearchInput = (e) => {
+    const handleSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (searchInput.trim()) {
             navigate(`/results?search_query=${searchInput}`)
@@ -53,7 +53,7 @@ const Header = ({ catagory }) => {
                         />
                         <button
                             type="submit"
-                            onClick={(e) => {
+                            onClick={(e: MouseEvent<HTMLButtonElement>) => {
                                 if (!isSearchOpen && window.innerWidth < 768) {
                                     e.preventDefault();
                                     setIsSearchOpen(true);
@@ -74,7 +74,7 @@ const Header = ({ catagory }) => {
                     <SignButton />
                 </div>
             </div>
-            {catagory && <HeaderCatagories />}
+            {category && <HeaderCatagories />}
         </>
     )
 }

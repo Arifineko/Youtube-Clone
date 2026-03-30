@@ -3,7 +3,15 @@ import subscriptionIcon from '../assets/icon/subscription-icon.svg'
 import shortIcon from '../assets/icon/short-icon.svg'
 import profileIconMobile from '../assets/icon/profile-icon-mobile.svg'
 
-export const sidebarData = [
+
+export interface SidebarData {
+    name: string;
+    image: string
+    path: string;
+}
+
+
+export const sidebarData: SidebarData[] = [
     {
         name: "Home",
         image: homeIcon,
@@ -26,7 +34,7 @@ export const sidebarData = [
     },
 ];
 
-export const sidebarDataActive = [
+export const sidebarDataActive: SidebarData[] = [
     {
         name: "Home",
         image: homeIcon,

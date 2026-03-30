@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
         <>
-            <Header catagory={true} />
+            <Header category={true} />
             {menu ? <SidebarActive /> : <Sidebar />}
             <Content />
         </>

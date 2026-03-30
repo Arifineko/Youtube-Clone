@@ -11,7 +11,7 @@ const Short = () => {
 
     return (
         <>
-            <Header catagory={false} />
+            <Header category={false} />
             {menu ? <SidebarActive /> : <Sidebar />}
             <RequireAuth
                 Icon={shortIcon}

@@ -68,6 +68,7 @@ export const useSearchVideo = (searchQuery: SearchQuery) => {
                 channelPics: profileMap
             }
         },
-        staleTime: 1000 * 60 * 10
+        staleTime: 1000 * 60 * 10,
+        enabled: !!searchQuery
     })
 }

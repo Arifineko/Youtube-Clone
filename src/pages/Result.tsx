@@ -17,7 +17,7 @@ export const Result = () => {
     const { data, isLoading, isError } = useSearchVideo(searchQuery)
     return (
         <>
-            <Header catagory={true} />
+            <Header category={true} />
             {menu ? <SidebarActive /> : <Sidebar />}
             <div className="md:pl-20 mb-20 md:mb-0 pt-23 md:pt-30 gap-4 flex flex-col md:p-5">
                 {isLoading && (
@@ -27,7 +27,7 @@ export const Result = () => {
                 )}
                 {isError && <div className="pt-24 pl-20 text-red-500">Error loading videos.</div>}
                 {!isLoading && !isError && data?.items?.map((video) => (
-                    <Link to={`/watch?v=${video.id.videoId}`} key={video.id.videoId} className='cursor-pointer'>
+                    <Link to={`/watch?v=${video.id}`} key={video.id} className='cursor-pointer'>
                         <div className="flex flex-col md:flex-row gap-4 cursor-pointer">
                             <div className="w-full md:w-2/5 flex-shrink-0">
                                 <VideoThumbnail

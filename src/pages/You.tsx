@@ -3,23 +3,23 @@ import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import SidebarActive from '../components/SidebarActive'
 import { MenuContext } from '../context/MenuContext'
-import subscriptionIcon from '../assets/icon/subscription-icon.svg'
 import { RequireAuth } from '../components/RequireAuth'
+import shortIcon from '../assets/icon/you-icon.svg'
 
-const Subscription = () => {
+const You = () => {
     const { menu, setMenu } = useContext(MenuContext)
 
     return (
         <>
-            <Header catagory={false} />
+            <Header category={false} />
             {menu ? <SidebarActive /> : <Sidebar />}
             <RequireAuth
-                Icon={subscriptionIcon}
-                title="Don't miss new videos"
-                subTitle="Sign in to see updates from your favorite YouTube channels"
+                Icon={shortIcon}
+                title="Enjoy your favorite videos"
+                subTitle="Sign in to access videos that you’ve liked or saved"
             />
         </>
     )
 }
 
-export default Subscription
+export default You

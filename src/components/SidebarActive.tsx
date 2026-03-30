@@ -1,3 +1,4 @@
+import type { SidebarData } from '../data/sidebarData'
 import { sidebarDataActive } from '../data/sidebarData'
 import SignButton from './SignButton'
 import { NavLink } from 'react-router-dom'
@@ -6,7 +7,7 @@ const SidebarActive = () => {
     return (
         <div className='fixed flex flex-col z-60 left-0 top-15 bottom-0 bg-white w-55'>
             <div className='overflow-y-auto mb-4'>
-                {sidebarDataActive.map((icon, key) => {
+                {sidebarDataActive.map((icon: SidebarData, key: number) => {
                     return (
                         <NavLink
                             key={key}

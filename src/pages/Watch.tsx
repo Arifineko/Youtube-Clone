@@ -25,7 +25,7 @@ const Watch = () => {
 
     return (
         <>
-            <Header catagory={false} />
+            <Header category={false} />
             {menu && <SidebarActive />}
 
             {isLoading && <SkeletonWatchPage />}

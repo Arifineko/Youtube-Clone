@@ -12,8 +12,8 @@ import Subscription from './pages/Subscription'
 import Short from './pages/Short'
 import You from './pages/You'
 
-const queryClient = new QueryClient()
 
+const queryClient = new QueryClient()
 
 function App() {
   const [menu, setMenu] = useState(false)

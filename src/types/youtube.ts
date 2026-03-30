@@ -21,6 +21,7 @@ export interface YoutubeSnippet {
 export interface YoutubeStatistics {
     viewCount: string;
     likeCount?: string;
+    subscriberCount: string;
 }
 
 export interface YoutubeVideo {

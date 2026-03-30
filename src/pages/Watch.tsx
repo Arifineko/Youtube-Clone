@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Header from '../components/Header'
 import { MenuContext } from '../context/MenuContext'
+import type { MenuContextType } from '../context/MenuContext'
 import SidebarActive from '../components/SidebarActive'
 import { formatViews, formatSubscribers, timeSince, formatLikes } from '../utils/format'
 import { useCategoryVideos, useVideoDetails } from '../hooks/useYoutube'
@@ -12,7 +13,7 @@ import type { CategoryId } from '../types/params'
 
 const Watch = () => {
     const [searchParams] = useSearchParams()
-    const { menu } = useContext(MenuContext)
+    const { menu } = useContext<MenuContextType>(MenuContext)
     const [isExpanded, setIsExpanded] = useState(false)
     const videoId = searchParams.get('v')
 
